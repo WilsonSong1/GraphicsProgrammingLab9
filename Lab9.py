@@ -10,6 +10,17 @@ img = cv2.imread('ATU1.jpg',)
 #converted the image to grayscale
 gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
+# Initiate ORB detector
+orb = cv2.ORB_create()
+
+# find the keypoints with ORB
+kp = orb.detect(img,None)
+
+# compute the descriptors with ORB
+kp, des = orb.compute(img, kp)
+
+img2 = cv2.drawKeypoints(img, kp, None, color=(0,255,0), flags=0)
+
 #deep copy 
 imgHarris = copy.deepcopy(img)
 imgShiTomasi = copy.deepcopy(img)
@@ -42,6 +53,10 @@ plt.title('HarrisCorners'), plt.xticks([]), plt.yticks([])
 #Shi Tomasi Corners
 plt.subplot(2, 2, 3),plt.imshow(cv2.cvtColor(imgShiTomasi, cv2.COLOR_BGR2RGB), cmap = 'gray')
 plt.title('ShiTomasi'), plt.xticks([]), plt.yticks([])
+
+#Orb Corners
+plt.subplot(2, 2, 4),plt.imshow(cv2.cvtColor(img2, cv2.COLOR_BGR2RGB), cmap = 'gray')
+plt.title('ORB'), plt.xticks([]), plt.yticks([])
 
 #displaying the image
 plt.show()
