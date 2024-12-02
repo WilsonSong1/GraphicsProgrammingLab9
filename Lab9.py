@@ -3,6 +3,11 @@ import copy
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
+from ultralytics import YOLO
+
+model = YOLO("yolo11n.pt")  # load an official model
+
+results = model(source="traffic.mp4", show=True, conf=0.4, save=True)
 
 #imported ATU jpeg using cv2
 img = cv2.imread('building.jpg',)
