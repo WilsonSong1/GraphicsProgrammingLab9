@@ -5,7 +5,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 #imported ATU jpeg using cv2
-img = cv2.imread('ATU1.jpg',)
+img = cv2.imread('table.jpg',)
 
 #converted the image to grayscale
 gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
